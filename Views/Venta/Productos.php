@@ -19,7 +19,12 @@ session_start();
 
 
 
-<body <?php if (isset($_REQUEST['error']) && $_REQUEST['error']) { ?> onload="isPageFullyLoaded()" <?php } ?>><!-- Navbar -->
+<body 
+    <?php if (isset($_REQUEST['agreado']) && $_REQUEST['agreado']) { ?> 
+        onload="isPageFullyLoaded(<?php echo $_REQUEST['agreado'] ?>)" <?php 
+        }elseif(isset($_REQUEST['agreado']) && $_REQUEST['agreado']) {?>
+        
+        <?php }?>><!-- Navbar -->
     <?php include '../Layout/Layout.php'; ?>
     <div class="container">
         <div class="jumbotron">
@@ -65,7 +70,8 @@ session_start();
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    function isPageFullyLoaded() {
+    function isPageFullyLoaded(type) {
+        console.log(type)
         Swal.fire({
             icon: 'success',
             title: 'Agregado',
