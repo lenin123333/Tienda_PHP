@@ -15,28 +15,23 @@ $precio;
 
 $origen=fopen("productos.txt","r");
 
-while(!feof($origen)){
-    $clave_doc=fgets($origen);
-    $nombre_doc=fgets($origen);
-    $imagen_doc=fgets($origen);
-    $precio_doc=fgets($origen);
-    $cantidad_doc = fgets($origen);
-    if($clave_doc==$clave){
-        $nombre=$nombre_doc;
-        $imagen=$imagen_doc;
-        $precio=$precio_doc;
-        
-    }
+while (!feof($origen)) {
+    $clave_doc = trim(fgets($origen));
+    $nombre_doc = trim(fgets($origen));
+    $imagen_doc = trim(fgets($origen));
+    $precio_doc = trim(fgets($origen));
+    $cantidad_doc = intval(trim(fgets($origen))); // Convertir a entero y limpiar la línea
 
+    if ($clave_doc == $clave) {
+        $nombre = $nombre_doc;
+        $imagen = $imagen_doc;
+        $precio = $precio_doc;
+        $cantidad_doc += intval($cantidadComprar); // Sumar la cantidad deseada
+    }
 }
 
-echo $clave;
-echo $nombre;
-echo $imagen;
-echo $precio;
-echo $cantidadComprar;
 
-
+return
 
 
 
