@@ -21,10 +21,10 @@ session_start();
 
 <body 
 <?php if (isset($_REQUEST['agreado']) && $_REQUEST['agreado'] === "\"error\"") { ?> 
-    onload="isPageFullyLoaded('error')" 
-<?php } ?>
-
-!-- Navbar -->
+        onload="isPageFullyLoaded('error')" 
+    <?php } elseif(isset($_REQUEST['agreado']) && $_REQUEST['agreado'] === "\"success\"") { ?> 
+        onload="isPageFullyLoaded('success')" 
+    <?php } ?>>
     <?php include '../Layout/Layout.php'; ?>
     <div class="container">
         <div class="jumbotron">
@@ -71,13 +71,22 @@ session_start();
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     function isPageFullyLoaded(type) {
-        console.log(type)
-        Swal.fire({
-            icon: 'success',
-            title: 'Agregado',
-            text: 'El Producto fue Agregado al Carrito',
+        if (type === 'success') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Agregado',
+                text: 'El Producto fue Agregado al Carrito',
 
-        })
+            })
+        }else{
+            Swal.fire({
+                icon: 'error',
+                title: 'No Agregado',
+                text: 'El Producto Sin Stock',
+
+            })
+        }
+
     }
 </script>
 

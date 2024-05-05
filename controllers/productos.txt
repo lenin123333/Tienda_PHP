@@ -2,9 +2,9 @@
 Cuadro Paisaje
 5.jpg
 100
-7
+0
 20
 Cuadros
 2.jpg
 1222
-333
+303
