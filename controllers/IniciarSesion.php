@@ -30,7 +30,7 @@ while (!feof($leer)) {
         $_SESSION['apellido'] = $apellido_doc;
         $_SESSION['correo'] = $correo_doc;
         $_SESSION['user']=$tipoUsuario;
-        header('Location: ../Views/Productos.php');
+        header('Location: ../Views/Venta/Productos.php');
         return;
     }
 }
