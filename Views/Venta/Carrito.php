@@ -23,36 +23,9 @@ if ($_SESSION['user'] == "") {
 
 <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
-                    <span class="sr-only"> Toggle navigation </span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="../Productos.php" class="navbar-brand"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> MiTiendita</a>
-
-            </div>
-            <div class="collapse navbar-collapse" id="bs-nav-demo">
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <form style="padding-top: 8px;" method="POST" class="header__form" action="../../controllers/CerrarSesion.php">
-                            <input type="submit" value="Cerrar Sesion" class="btn btn-outline-secondary">
-                        </form>
-                    </li>
-
-
-                </ul>
-            </div>
-        </div>
-    </nav>
+<?php include '../Layout/Layout.php'; ?>
     <div class="container">
         <div class="jumbotron">
-
-            <h1> <img src="../../img/tienda.png" alt="" width="100px"> <i class="fa fa-camera-retro"></i> Mi Tiendita</h1>
             <p>Verfica tus productos</p>
         </div>
 
@@ -71,7 +44,7 @@ if ($_SESSION['user'] == "") {
             <tbody>
 
                 <?php
-                $sumaTotal;
+                $sumaTotal=0;
                 $leer = fopen('../../controllers/carrito.txt', 'r');
                 while (!feof($leer)) {
                     $clave_doc = fgets($leer);
@@ -107,10 +80,12 @@ if ($_SESSION['user'] == "") {
                 ?>
         </table>
 
-        <div class="container mt-3" style="margin:5rem;">
-        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-            <p style="font-size:25px; margin-left:700px;">Total: $  <?php echo $sumaTotal ?></p>
+        <div class="container mt-3" >
+        <div class=" d-md-flex justify-content-md-end">
+            <p class=" fs-2" >Total: $  <?php echo $sumaTotal ?></p>
+            <div>
             <a style="margin-left: 800px;" href="../../controllers/Ventas.php" class="btn btn-warning">Comprar</a>
+            </div>
         </div>
         </div>
 

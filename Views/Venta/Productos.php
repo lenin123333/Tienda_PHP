@@ -10,8 +10,8 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
 
@@ -20,41 +20,15 @@ session_start();
 
 
 <body <?php if (isset($_REQUEST['error']) && $_REQUEST['error']) { ?> onload="isPageFullyLoaded()" <?php } ?>><!-- Navbar -->
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-            <h1> <img src="../img/tienda.png" alt="" width="100px"> <i class="fa fa-camera-retro"></i> Mi Tiendita</h1>
-               
-            </div>
-            <ul class="nav navbar-nav navbar-right">
-
-                <?php if (!isset($_SESSION['user'])) { ?>
-                    <!-- Verifica si el usuario está registrado pero no ha iniciado sesión -->
-                    <li><a href="Auth/login.php" class="btn btn-warning"> Login </a></li>
-                <?php } else { ?>
-                    <li><a class="btn btn-info" href="Venta/carrito.php">Carrito</a></li>
-                    <li>
-                        <form style="padding-top: 8px;" method="POST" class="header__form" action="../controllers/CerrarSesion.php">
-                            <input type="submit" value="Cerrar Sesion" class="btn btn-warning">
-                        </form>
-                    </li>
-                <?php }
-                ?>
-
-            </ul>
-        </div>
-    </nav>
-
+    <?php include '../Layout/Layout.php'; ?>
     <div class="container">
         <div class="jumbotron">
-
-           
             <p>Selecciona tus Productos Favoritos</p>
         </div>
 
         <div class="row">
 
-            <?php $leer = fopen('../controllers/productos.txt', 'r');
+            <?php $leer = fopen('../../controllers/productos.txt', 'r');
             while (!feof($leer)) {
                 $clave_doc = fgets($leer);
                 $nombre_doc = fgets($leer);
@@ -63,16 +37,16 @@ session_start();
                 $cantidad_doc = fgets($leer);
                 if ($clave_doc != null) { ?>
 
-                    <div class="col-lg-4 col-sm-6">
+                    <div class="col-lg-4 col-sm-6 ">
+                        <h3> <?php echo $nombre_doc ?></h3>
+                        <p>Disponible: <?php echo $cantidad_doc ?></p>
                         <div class="thumbnail">
-                            <img src="../controllers/files/<?php echo $clave_doc ?>/<?php echo $imagen_doc ?> " />
+                            <img style="width: 400px;" src="../../controllers/files/<?php echo $clave_doc ?>/<?php echo $imagen_doc ?> " />
                             <div class="p-4">
-                                <h3> <?php echo $nombre_doc ?></h3>
-                                <p>Disponible: <?php echo $cantidad_doc ?></p>
-                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
-                                    <h4>Precio: $ <?php echo $precio_doc ?></h4>
+                                <div class="d-flex align-items-center justify-content-between rounded-pill bg-light ">
+                                    <h4>Precio: <?php echo '$ ' . number_format($precio_doc, 2); ?></h4>
                                 </div>
-                                <form action="../controllers/AgregarCarrito.php" method="Post">
+                                <form action="../../controllers/AgregarCarrito.php" method="Post">
                                     <input type="hidden" name="clave" value="<?php echo $clave_doc ?>">
                                     <input type="number" id="cantidad" name="cantidad" value="1" min="1" oninput="this.value = Math.max(this.value, 1) ">
                                     <button class="btn btn-warning" type="submit">Agregar al Carrito</button>
@@ -82,10 +56,6 @@ session_start();
                     </div>
             <?php }
             } ?>
-
-
-
-
         </div>
     </div>
 </body>

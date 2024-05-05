@@ -44,4 +44,4 @@ echo $cantidadComprar;
 $guardar=fopen('carrito.txt','a+');
 fputs($guardar,trim($clave)."\n". trim($nombre)."\n".trim($imagen)."\n".trim($precio)."\n".trim($cantidadComprar)."\n");
 fclose($guardar);
-header( 'Location: ../Views/Productos.php?error="encontrado"');
+header( 'Location: ../Views/Venta/Productos.php?error="encontrado"');

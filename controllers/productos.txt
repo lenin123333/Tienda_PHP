@@ -1,7 +1,7 @@
 22
 Cuadro Paisaje
 5.jpg
-100.00
+100
 12
 20
 Cuadros
