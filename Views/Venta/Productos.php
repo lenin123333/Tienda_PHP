@@ -20,11 +20,11 @@ session_start();
 
 
 <body 
-    <?php if (isset($_REQUEST['agreado']) && $_REQUEST['agreado']) { ?> 
-        onload="isPageFullyLoaded(<?php echo $_REQUEST['agreado'] ?>)" <?php 
-        }elseif(isset($_REQUEST['agreado']) && $_REQUEST['agreado']) {?>
-        
-        <?php }?>><!-- Navbar -->
+<?php if (isset($_REQUEST['agreado']) && $_REQUEST['agreado'] === "\"error\"") { ?> 
+    onload="isPageFullyLoaded('error')" 
+<?php } ?>
+
+!-- Navbar -->
     <?php include '../Layout/Layout.php'; ?>
     <div class="container">
         <div class="jumbotron">
