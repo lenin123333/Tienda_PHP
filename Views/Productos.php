@@ -1,6 +1,5 @@
 <?php
 session_start();
-
 ?>
 
 <!DOCTYPE html>
@@ -20,46 +19,36 @@ session_start();
 
 
 
-<body <?php if(isset($_REQUEST['error']) && $_REQUEST['error']) { ?>
-    onload="isPageFullyLoaded()"
-<?php } ?>><!-- Navbar -->
-    <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
+<body <?php if (isset($_REQUEST['error']) && $_REQUEST['error']) { ?> onload="isPageFullyLoaded()" <?php } ?>><!-- Navbar -->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
-                    <span class="sr-only"> Toggle navigation </span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="Productos.php" class="navbar-brand"><span class="glyphicon glyphicon-picture" aria-hidden="true"></span> MiTiendita</a>
-
+            <h1> <img src="../img/tienda.png" alt="" width="100px"> <i class="fa fa-camera-retro"></i> Mi Tiendita</h1>
+               
             </div>
-            <div class="collapse navbar-collapse" id="bs-nav-demo">
+            <ul class="nav navbar-nav navbar-right">
 
-                <ul class="nav navbar-nav navbar-right">
+                <?php if (!isset($_SESSION['user'])) { ?>
+                    <!-- Verifica si el usuario está registrado pero no ha iniciado sesión -->
+                    <li><a href="Auth/login.php" class="btn btn-warning"> Login </a></li>
+                <?php } else { ?>
+                    <li><a class="btn btn-info" href="Venta/carrito.php">Carrito</a></li>
+                    <li>
+                        <form style="padding-top: 8px;" method="POST" class="header__form" action="../controllers/CerrarSesion.php">
+                            <input type="submit" value="Cerrar Sesion" class="btn btn-warning">
+                        </form>
+                    </li>
+                <?php }
+                ?>
 
-                    <?php if ($_SESSION['user'] == "") { ?>
-
-                        <li><a href="Auth/login.php" class="btn btn-light"> Login </a></li>
-                    <?php } else { ?>
-                        <li><a class="btn btn-light" href="Venta/carrito.php">Carrito</a></li>
-                        <li>
-                            <form style="padding-top: 8px;" method="POST" class="header__form" action="../controllers/CerrarSesion.php">
-                                <input type="submit" value="Cerrar Sesion" class="btn btn-outline-secondary">
-                            </form>
-                        </li>
-                    <?php }
-                    ?>
-
-                </ul>
-            </div>
+            </ul>
         </div>
     </nav>
+
     <div class="container">
         <div class="jumbotron">
 
-            <h1> <img src="../img/tienda.png" alt="" width="100px"> <i class="fa fa-camera-retro"></i> Mi Tiendita</h1>
+           
             <p>Selecciona tus Productos Favoritos</p>
         </div>
 
@@ -83,9 +72,9 @@ session_start();
                                 <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
                                     <h4>Precio: $ <?php echo $precio_doc ?></h4>
                                 </div>
-                                <form action="../controllers/AgregarCarrito.php" method="Post" >
+                                <form action="../controllers/AgregarCarrito.php" method="Post">
                                     <input type="hidden" name="clave" value="<?php echo $clave_doc ?>">
-                                    <input type="number" id="cantidad" name="cantidad" value="1" min="1"  oninput="this.value = Math.max(this.value, 1) " >
+                                    <input type="number" id="cantidad" name="cantidad" value="1" min="1" oninput="this.value = Math.max(this.value, 1) ">
                                     <button class="btn btn-warning" type="submit">Agregar al Carrito</button>
                                 </form>
                             </div>
@@ -106,8 +95,7 @@ session_start();
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-
-function isPageFullyLoaded() {
+    function isPageFullyLoaded() {
         Swal.fire({
             icon: 'success',
             title: 'Agregado',
@@ -115,7 +103,6 @@ function isPageFullyLoaded() {
 
         })
     }
-
 </script>
 
 </html>
