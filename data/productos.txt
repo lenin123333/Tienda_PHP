@@ -28,3 +28,13 @@ Donas de Chocolate
 donas_06.jpg
 50
 10
+550
+Pizza
+pizzas_05.jpg
+250
+20
+300
+Pastel Chocolate
+pastel_05.jpg
+300
+20
