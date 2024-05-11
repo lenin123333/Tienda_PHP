@@ -33,7 +33,7 @@ session_start();
 
         <div class="row">
 
-            <?php $leer = fopen('../../controllers/productos.txt', 'r');
+            <?php $leer = fopen('../../data/productos.txt', 'r');
             while (!feof($leer)) {
                 $clave_doc = fgets($leer);
                 $nombre_doc = fgets($leer);
@@ -46,7 +46,7 @@ session_start();
                         <h3> <?php echo $nombre_doc ?></h3>
                         <p>Disponible: <?php echo $cantidad_doc ?></p>
                         <div class="thumbnail">
-                            <img style="width: 400px;" src="../../controllers/files/<?php echo $clave_doc ?>/<?php echo $imagen_doc ?> " />
+                            <img style="width: 400px;" src="../../data/files/<?php echo $clave_doc ?>/<?php echo $imagen_doc ?> " />
                             <div class="p-4">
                                 <div class="d-flex align-items-center justify-content-between rounded-pill bg-light ">
                                     <h4>Precio: <?php echo '$ ' . number_format($precio_doc, 2); ?></h4>

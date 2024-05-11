@@ -11,7 +11,7 @@ $imagen;
 $precio;
 $nuevasLineas = ''; // Variable para almacenar las líneas actualizadas del archivo
 
-$origen = fopen("productos.txt", "r");
+$origen = fopen("../data/productos.txt", "r");
 
 while (!feof($origen)) {
     $clave_doc = trim(fgets($origen));
@@ -42,7 +42,7 @@ while (!feof($origen)) {
 fclose($origen);
 
 // Guardar las líneas actualizadas en el archivo
-$guardar = fopen('productos.txt', 'w');
+$guardar = fopen('../data/productos.txt', 'w');
 fputs($guardar, $nuevasLineas);
 fclose($guardar);
 

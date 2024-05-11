@@ -16,14 +16,18 @@ if ($_SESSION['user'] == "") {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito</title>
-    <link rel="stylesheet" href="../../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
 </head>
 
-<body>
+<body <?php if (isset($_REQUEST['agreado']) && $_REQUEST['agreado'] === "\"error\"") { ?> 
+    onload="isPageFullyLoaded('error')" 
+    <?php } elseif (isset($_REQUEST['agreado']) && $_REQUEST['agreado'] === "\"success\"") { ?> 
+        onload="isPageFullyLoaded('success')" 
+    <?php } ?>>
 
-<?php include '../Layout/Layout.php'; ?>
+    <?php include '../Layout/Layout.php'; ?>
     <div class="container">
         <div class="jumbotron">
             <p>Verfica tus productos</p>
@@ -44,8 +48,8 @@ if ($_SESSION['user'] == "") {
             <tbody>
 
                 <?php
-                $sumaTotal=0;
-                $leer = fopen('../../controllers/carrito.txt', 'r');
+                $sumaTotal = 0;
+                $leer = fopen('../../data/carrito.txt', 'r');
                 while (!feof($leer)) {
                     $clave_doc = fgets($leer);
                     $nombre_doc = fgets($leer);
@@ -58,7 +62,7 @@ if ($_SESSION['user'] == "") {
                 ?>
                         <tr>
                             <td><?php echo $nombre_doc ?></td>
-                            <td><img src="../../controllers/files/<?php echo $clave_doc ?>/<?php echo $imagen_doc ?>" width="100px" alt="<?php echo $nombre_doc ?>"></td>
+                            <td><img src="../../data/files/<?php echo $clave_doc ?>/<?php echo $imagen_doc ?>" width="100px" alt="<?php echo $nombre_doc ?>"></td>
                             <td> <?php echo $precio_doc ?></td>
                             <td>$ <?php echo $cantidad_doc ?></td>
                             <td>$ <?php echo $precioTotal ?></td>
@@ -80,13 +84,16 @@ if ($_SESSION['user'] == "") {
                 ?>
         </table>
 
-        <div class="container mt-3" >
-        <div class=" d-md-flex justify-content-md-end">
-            <p class=" fs-2" >Total: $  <?php echo $sumaTotal ?></p>
-            <div>
-            <a style="margin-left: 800px;" href="../../controllers/Ventas.php" class="btn btn-warning">Comprar</a>
+        <div class="container mt-3">
+            <div class=" d-md-flex justify-content-md-end mx-4">
+                <p class=" fs-2 mx-4">Total: <?php echo '$ ' . number_format($sumaTotal, 2)  ?></p>
+                <form method="post" action="../../controllers/Comprar.php">
+                    <input type="hidden" name="sumaTotal" value=" <?php echo $sumaTotal ?> ">
+                    <button type="submit" class="btn btn-warning">
+                        Comprar
+                    </button>
+                </form>
             </div>
-        </div>
         </div>
 
 
@@ -98,5 +105,25 @@ if ($_SESSION['user'] == "") {
 <!-- JavaScript Bootstrap CDN -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    function isPageFullyLoaded(type) {
+        if (type === 'success') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Agregado',
+                text: 'Compra Realizada',
+
+            })
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error de Venta',
+                text: 'Error Al realizar La compra',
+
+            })
+        }
+
+    }
+</script>
 
 </html>
