@@ -1,8 +1,8 @@
-22
+663fe9d4a5e3322
 Hamburguesa
 hamburguesas_03.jpg
 100
-5
+6
 20
 Galletas
 galletas_06.jpg
@@ -12,7 +12,7 @@ galletas_06.jpg
 Pizza
 pizzas_02.jpg
 250
-2
+3
 66
 Hot-dog
 hamburguesas_07.jpg
@@ -22,7 +22,7 @@ hamburguesas_07.jpg
 Donas de Chocolate
 donas_06.jpg
 50
-9
+10
 550
 Pizza
 pizzas_05.jpg
@@ -33,13 +33,5 @@ Pastel Chocolate
 pastel_05.jpg
 300
 20
-200
-Modi ipsam qui aperi
-hamburguesas_07.jpg
-95
-29
+2020
 
-
-
-
-0

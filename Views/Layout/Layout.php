@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <h1> <img src="../../img/tienda.png" alt="" width="100px"> <i class="fa fa-camera-retro"></i> <a href="../Index.php">Mi Tiendita</a></h1>
+                <h1> <img src="../../img/tienda.png" alt="" width="100px"> <i class="fa fa-camera-retro"></i> <a href="../..//Index.php">Mi Tiendita</a></h1>
 
             </div>
             <div class="nav navbar-nav navbar-right">

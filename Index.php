@@ -20,9 +20,9 @@ session_start();
 
 
 <body 
-<?php if (isset($_REQUEST['agreado']) && $_REQUEST['agreado'] === "\"error\"") { ?> 
+<?php if (isset($_REQUEST['agregado']) && $_REQUEST['agregado'] === "\"error\"") { ?> 
         onload="isPageFullyLoaded('error')" 
-    <?php } elseif(isset($_REQUEST['agreado']) && $_REQUEST['agreado'] === "\"success\"") { ?> 
+    <?php } elseif(isset($_REQUEST['agregado']) && $_REQUEST['agregado'] === "\"success\"") { ?> 
         onload="isPageFullyLoaded('success')" 
     <?php } ?>>
     <nav class="navbar navbar-default">

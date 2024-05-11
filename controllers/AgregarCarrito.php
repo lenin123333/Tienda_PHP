@@ -29,7 +29,7 @@ while (!feof($origen)) {
             $precio = $precio_doc;
             $cantidad_doc -= $cantidadComprar; // Restar la cantidad deseada
         }else{
-            return header( 'Location: ../Index.php?agreado="error"');
+            return header( 'Location: ../Index.php?agregado="error"');
         }
     }
     
@@ -113,4 +113,4 @@ fclose($guardar);
 
 
 
-header( 'Location: ../Index.php?agreado="success"');
+header( 'Location: ../Index.php?agregado="success"');
