@@ -57,13 +57,13 @@ if($_SESSION['admin']==""){
                 
                 <!-- Name input -->
                 <div class="form-outline mb-4">
-                    <input type="text" id="precio" name="precio" class="form-control" />
+                    <input type="number" id="precio" name="precio" class="form-control" />
                     <label class="form-label" for="precio">Precio Producto</label>
                 </div>
 
                 <!-- Name input -->
                 <div class="form-outline mb-4">
-                    <input type="text" id="cantidad" name="cantidad" class="form-control" />
+                    <input type="number" id="cantidad" name="cantidad" class="form-control" />
                     <label class="form-label" for="cantidad">Cantidad Producto</label>
                 </div>
 

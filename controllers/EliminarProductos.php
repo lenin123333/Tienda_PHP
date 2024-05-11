@@ -2,7 +2,7 @@
 
 $eliminar =(int) $_REQUEST['clave'];
         
-$origen=fopen("productos.txt","r");
+$origen=fopen("../data/productos.txt","r");
 $aux=fopen("temp.txt","a+");
 while(!feof($origen)){
     $clave=fgets($origen);
@@ -20,8 +20,8 @@ while(!feof($origen)){
 }
 fclose($origen);
 fclose($aux);
-if(file_exists("productos.txt")){
-    unlink("productos.txt");
+if(file_exists("../data/productos.txt")){
+    unlink("../data/productos.txt");
 }
-rename("temp.txt", "productos.txt");
+rename("temp.txt", "../data/productos.txt");
 header( 'Location: ../Views/Admin/Productos_Admin.php');

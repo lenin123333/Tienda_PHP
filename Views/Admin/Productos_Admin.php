@@ -46,7 +46,7 @@ if ($_SESSION['admin'] == "") {
       </thead>
       <tbody>
         <?php
-        $leer = fopen('../../controllers/productos.txt', 'r');
+        $leer = fopen('../../data/productos.txt', 'r');
         while (!feof($leer)) {
           $clave_doc = fgets($leer);
           $nombre_doc = fgets($leer);
@@ -58,7 +58,7 @@ if ($_SESSION['admin'] == "") {
 
             <tr>
               <td><?php echo $nombre_doc ?></td>
-              <td><img src="../../controllers/files/<?php echo $clave_doc ?>/<?php echo $imagen_doc ?>" width="100px" alt="<?php echo $nombre_doc ?>"></td>
+              <td><img src="../../data/files/<?php echo $clave_doc ?>/<?php echo $imagen_doc ?>" width="100px" alt="<?php echo $nombre_doc ?>"></td>
               <td><?php echo $precio_doc ?></td>
               <td><?php echo $cantidad_doc ?></td>
               <td><a href="ModificarProducto.php?clave=<?php echo $clave_doc ?>" class="btn btn-primary ">Modificar</a></td>

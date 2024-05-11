@@ -4,7 +4,7 @@ $nombre=$_REQUEST['nombre'];
 $precio=$_REQUEST['precio'];
 $cantidad=$_REQUEST['cantidad'];
 
-$ruta='files/'.$clave.'/';
+$ruta='../data/files/'.$clave.'/';
 $archivo=$ruta.$_FILES["imagen"]["name"];
 if(!file_exists($ruta)){
     mkdir($ruta);
@@ -15,7 +15,7 @@ if(!file_exists($archivo)){
 $imagen=$_FILES["imagen"]["name"];
 
 
-$leer = fopen('productos.txt', 'r');
+$leer = fopen('../data/productos.txt', 'r');
 while (!feof($leer)) {
     $clave_doc= fgets($leer);
     $nombre_doc = fgets($leer);
@@ -32,7 +32,7 @@ while (!feof($leer)) {
 }
 
 //Si no existe guarda
-$guardar=fopen('productos.txt','a+');
+$guardar=fopen('../data/productos.txt','a+');
 fputs($guardar,$clave."\n".$nombre."\n".$imagen."\n".$precio."\n".$cantidad."\n");
 fclose($guardar);
 header( 'Location: ../Views/Admin/Productos_Admin.php');

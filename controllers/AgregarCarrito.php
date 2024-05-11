@@ -1,7 +1,9 @@
 <?php 
 session_start();
-if ($_SESSION['user'] == "") {
+
+if (!isset($_SESSION['user'])) {
     header('Location: ../Views/Auth/Login.php');
+    return;
 }
 
 $cantidadComprar = (int)$_REQUEST['cantidad'];
@@ -48,7 +50,7 @@ fclose($guardar);
 
 
 // Abrir el archivo en modo lectura y escritura
-$guardar = fopen('carrito.txt', 'r+');
+$guardar = fopen('../data/carrito.txt', 'r+');
 
 // Variable para controlar si se encuentra el producto
 $producto_encontrado = false;

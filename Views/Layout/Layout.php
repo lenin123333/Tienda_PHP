@@ -8,7 +8,7 @@
 
                 <?php if (!isset($_SESSION['user'])) { ?>
                     <!-- Verifica si el usuario está registrado pero no ha iniciado sesión -->
-                    <a href="Auth/login.php" class="btn btn-warning"> Login </a>
+                    <a href="../Auth/login.php" class="btn btn-warning"> Login </a>
                 <?php } else { ?>
                     <form style="padding-top: 8px;" method="POST" class="header__form" action="../../controllers/CerrarSesion.php">
                         <a class="btn btn-info" href="../Venta/carrito.php">Carrito</a>

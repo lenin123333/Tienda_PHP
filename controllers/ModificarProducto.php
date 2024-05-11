@@ -6,7 +6,7 @@ $new_precio = $_REQUEST['precio'];
 $new_cantidad = $_REQUEST['cantidad'];
 
 if($_FILES["imagen"]["name"]!=""){
-    $ruta='files/'.$new_clave.'/';
+    $ruta='../data/files/'.$new_clave.'/';
     $archivo = $ruta . $_FILES["imagen"]["name"];
     if (!file_exists($ruta)) {
         mkdir($ruta);
@@ -56,8 +56,8 @@ while(!feof($origen)){
 }
 fclose($origen);
 fclose($aux);
-if(file_exists("productos.txt")){
-    unlink("productos.txt");
+if(file_exists("../data/productos.txt")){
+    unlink("../data/productos.txt");
 }
-rename("temp.txt", "productos.txt");
+rename("temp.txt", "../data/productos.txt");
 header( 'Location: ../Views/Admin/Productos_Admin.php');

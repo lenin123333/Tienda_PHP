@@ -10,7 +10,7 @@ $imagen;
 $precio;
 $cantiad;
 
-$leer = fopen('../../controllers/productos.txt', 'r');
+$leer = fopen('../../data/productos.txt', 'r');
 while (!feof($leer)) {
 
     $clave_doc = fgets($leer);

@@ -3,7 +3,7 @@
 $correo = $_REQUEST['correo'];
 $contraseña = $_REQUEST['contraseña'];
 
-$leer = fopen('usuarios.txt', 'r');
+$leer = fopen('../data/usuarios.txt', 'r');
 
 
 while (!feof($leer)) {

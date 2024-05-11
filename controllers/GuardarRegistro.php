@@ -6,7 +6,7 @@ $contraseña=$_REQUEST['contraseña'];
 
 
 
-$leer = fopen('usuarios.txt', 'r');
+$leer = fopen('../data/usuarios.txt', 'r');
 while (!feof($leer)) {
 
     $nombre_doc = fgets($leer);
@@ -24,7 +24,7 @@ while (!feof($leer)) {
 }
 
 //Si no existe guarda
-$guardar=fopen('usuarios.txt','a+');
+$guardar=fopen('../data/usuarios.txt','a+');
 fputs($guardar,$nombre."\n".$apellido."\n".$correo."\n".$contraseña."\n"."\n"."1"."\n");
 fclose($guardar);
 header( 'Location: ../Views/Productos.php') ;
