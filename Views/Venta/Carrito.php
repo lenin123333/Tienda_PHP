@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ($_SESSION['user'] == "") {
-    header('Location: ../Auth/Login.php');
+    header('Location: ../../Index.php');
 }
 
 

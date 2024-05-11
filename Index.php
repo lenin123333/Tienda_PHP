@@ -10,7 +10,7 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
-    <link rel="stylesheet" href="../../css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.21/jspdf.plugin.autotable.min.js"></script>
@@ -25,7 +25,29 @@ session_start();
     <?php } elseif(isset($_REQUEST['agreado']) && $_REQUEST['agreado'] === "\"success\"") { ?> 
         onload="isPageFullyLoaded('success')" 
     <?php } ?>>
-    <?php include '../Layout/Layout.php'; ?>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <h1> <img src="./img/tienda.png" alt="" width="100px"> <i class="fa fa-camera-retro"></i> <a href="../Index.php">Mi Tiendita</a></h1>
+
+            </div>
+            <div class="nav navbar-nav navbar-right">
+
+                <?php if (!isset($_SESSION['user'])) { ?>
+                    <!-- Verifica si el usuario está registrado pero no ha iniciado sesión -->
+                    <a href="./Views/Auth/Login.php" class="btn btn-warning"> Login </a>
+                <?php } else { ?>
+                    <form style="padding-top: 8px;" method="POST" class="header__form" action="../../controllers/CerrarSesion.php">
+                        <a class="btn btn-info" href="./Views/Venta/carrito.php">Carrito</a>
+                        <input type="submit" value="Cerrar Sesion" class="btn btn-warning">
+                    </form>
+                <?php }
+                ?>
+
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="jumbotron">
             <p>Selecciona tus Productos Favoritos</p>
@@ -33,7 +55,7 @@ session_start();
 
         <div class="row">
 
-            <?php $leer = fopen('../../data/productos.txt', 'r');
+            <?php $leer = fopen('./data/productos.txt', 'r');
             while (!feof($leer)) {
                 $clave_doc = fgets($leer);
                 $nombre_doc = fgets($leer);
@@ -46,12 +68,12 @@ session_start();
                         <h3> <?php echo $nombre_doc ?></h3>
                         <p>Disponible: <?php echo $cantidad_doc ?></p>
                         <div class="thumbnail">
-                            <img style="width: 400px;" src="../../data/files/<?php echo $clave_doc ?>/<?php echo $imagen_doc ?> " />
+                            <img style="width: 400px;" src="./data/files/<?php echo $clave_doc ?>/<?php echo $imagen_doc ?> " />
                             <div class="p-4">
                                 <div class="d-flex align-items-center justify-content-between rounded-pill bg-light ">
                                     <h4>Precio: <?php echo '$ ' . number_format($precio_doc, 2); ?></h4>
                                 </div>
-                                <form action="../../controllers/AgregarCarrito.php" method="Post">
+                                <form action="./controllers/AgregarCarrito.php" method="Post">
                                     <input type="hidden" name="clave" value="<?php echo $clave_doc ?>">
                                     <input type="number" id="cantidad" name="cantidad" value="1" min="1" oninput="this.value = Math.max(this.value, 1) ">
                                     <button class="btn btn-warning" type="submit">Agregar al Carrito</button>

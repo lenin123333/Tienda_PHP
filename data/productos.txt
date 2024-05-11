@@ -1,20 +1,30 @@
 22
-Cuadro Paisaje
-5.jpg
+Hamburguesa
+hamburguesas_03.jpg
 100
-0
+10
 20
-Cuadros
-2.jpg
+Galletas
+galletas_06.jpg
 1222
 297
 25
 Pizza
 pizzas_02.jpg
 250
-10
+8
 66
 Hot-dog
 hamburguesas_07.jpg
 187
+10
+33
+Cafe frio
+cafe_12.jpg
+120
+30
+365
+Donas de Chocolate
+donas_06.jpg
+50
 10

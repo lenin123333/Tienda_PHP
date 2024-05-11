@@ -20,8 +20,8 @@ if($_FILES["imagen"]["name"]!=""){
 }
 
 
-$origen=fopen("productos.txt","r");
-$aux=fopen("temp.txt","a+");
+$origen=fopen("../data/productos.txt","r");
+$aux=fopen("../data/temp.txt","a+");
 
 while(!feof($origen)){
     $clave=fgets($origen);
@@ -59,5 +59,5 @@ fclose($aux);
 if(file_exists("../data/productos.txt")){
     unlink("../data/productos.txt");
 }
-rename("temp.txt", "../data/productos.txt");
+rename("../data/temp.txt", "../data/productos.txt");
 header( 'Location: ../Views/Admin/Productos_Admin.php');

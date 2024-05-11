@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if($_SESSION['admin']==""){
-    header('Location: ../Productos.php');
+    header('Location: ../../Index.php');
 }
 
 
